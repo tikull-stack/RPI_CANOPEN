@@ -56,7 +56,7 @@ OBJS = $(SOURCES:%.c=%.o)
 CC ?= gcc
 CFLAGS = -Wall -g $(INCLUDE_DIRS)
 LDFLAGS = -lrt -pthread
-
+EXTRA_LIBS = -lwiringPi
 
 .PHONY: all clean
 
@@ -69,4 +69,4 @@ clean:
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(LINK_TARGET): $(OBJS)
-	$(CC) $(LDFLAGS) $^ -o $@
+	$(CC) $(LDFLAGS) $^ -o $@ $(EXTRA_LIBS)
